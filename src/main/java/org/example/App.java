@@ -32,6 +32,8 @@ public class App
         st1.setGrade("2");
         st1.getLaptop_list().add(l1);
         st1.getLaptop_list().add(l2);
+        l1.setStudent(st1);
+        l2.setStudent(st1);
 
         Student st2=new Student();
         StudentName st2_name=new StudentName();
@@ -42,6 +44,7 @@ public class App
         st2.setRollnum("MT2022002");
         st2.setGrade("1");
         st2.getLaptop_list().add(l3);
+        l3.setStudent(st2);
 
         Student st3=new Student();
         StudentName st3_name=new StudentName();
@@ -52,7 +55,7 @@ public class App
         st3.setRollnum("MT2021003");
         st3.setGrade("3");
         st3.getLaptop_list().add(l4);
-
+        l4.setStudent(st3);
         /*
             Creating Configuration object and configure it
             Creating ServiceRegistry object and apply configuration settings.

@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "laptop")
 public class Laptop {
+
     public Laptop(int lid, String lname) {
         this.lid = lid;
         this.lname = lname;
@@ -16,6 +17,9 @@ public class Laptop {
 
     @Column(name="lname")
     private String lname;
+
+    @ManyToOne
+    private Student student;
 
     public Laptop() {
     }
@@ -36,11 +40,20 @@ public class Laptop {
         this.lname = lname;
     }
 
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
     @Override
     public String toString() {
         return "Laptop{" +
                 "lid=" + lid +
                 ", lname='" + lname + '\'' +
+                ", student=" + student +
                 '}';
     }
 }

@@ -19,7 +19,7 @@ public class Student{
     private String rollnum;
     @Column(name="grade")
     private String Grade;
-    @OneToMany
+    @OneToMany(mappedBy = "student")
     private List<Laptop> laptop_list=new ArrayList<>();
 
     public StudentName getName() {
