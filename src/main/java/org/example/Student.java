@@ -1,5 +1,9 @@
 package org.example;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "student")
 public class Student{
@@ -15,8 +19,8 @@ public class Student{
     private String rollnum;
     @Column(name="grade")
     private String Grade;
-    @OneToOne
-    private Laptop laptop;
+    @OneToMany
+    private List<Laptop> laptop_list=new ArrayList<>();
 
     public StudentName getName() {
         return name;
@@ -42,12 +46,12 @@ public class Student{
         Grade = grade;
     }
 
-    public Laptop getLaptop() {
-        return laptop;
+    public List<Laptop> getLaptop_list() {
+        return laptop_list;
     }
 
-    public void setLaptop(Laptop laptop) {
-        this.laptop = laptop;
+    public void setLaptop_list(List<Laptop> laptop_list) {
+        this.laptop_list = laptop_list;
     }
 
     @Override
@@ -56,7 +60,7 @@ public class Student{
                 "name=" + name +
                 ", rollnum='" + rollnum + '\'' +
                 ", Grade='" + Grade + '\'' +
-                ", laptop=" + laptop +
+                ", laptops=" + laptop_list +
                 '}';
     }
 }
