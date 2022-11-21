@@ -2,6 +2,9 @@ package org.example;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "laptop")
 public class Laptop {
@@ -18,8 +21,8 @@ public class Laptop {
     @Column(name="lname")
     private String lname;
 
-    @ManyToOne
-    private Student student;
+    @ManyToMany
+    private List<Student> students=new ArrayList<>();
 
     public Laptop() {
     }
@@ -40,20 +43,17 @@ public class Laptop {
         this.lname = lname;
     }
 
-    public Student getStudent() {
-        return student;
+    public List<Student> getStudents() {
+        return students;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setStudents(List<Student> students) {
+        this.students = students;
     }
 
-    @Override
-    public String toString() {
-        return "Laptop{" +
-                "lid=" + lid +
-                ", lname='" + lname + '\'' +
-                ", student=" + student +
-                '}';
+    public Laptop(int lid, String lname, List<Student> students) {
+        this.lid = lid;
+        this.lname = lname;
+        this.students = students;
     }
 }
