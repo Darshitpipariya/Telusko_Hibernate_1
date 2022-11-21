@@ -15,7 +15,8 @@ public class Student{
     private String rollnum;
     @Column(name="grade")
     private String Grade;
-
+    @OneToOne
+    private Laptop laptop;
 
     public StudentName getName() {
         return name;
@@ -41,12 +42,21 @@ public class Student{
         Grade = grade;
     }
 
+    public Laptop getLaptop() {
+        return laptop;
+    }
+
+    public void setLaptop(Laptop laptop) {
+        this.laptop = laptop;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
-                "name='" + name + '\'' +
+                "name=" + name +
                 ", rollnum='" + rollnum + '\'' +
                 ", Grade='" + Grade + '\'' +
+                ", laptop=" + laptop +
                 '}';
     }
 }
