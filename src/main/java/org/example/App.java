@@ -1,11 +1,15 @@
 package org.example;
 
+import jakarta.persistence.Column;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
+
+import java.util.Collection;
+import java.util.List;
 
 /**
  * Hello world!
@@ -63,6 +67,11 @@ public class App
 
         st3.getLaptop_list().add(l4);
         l4.getStudents().add(st3);
+
+
+
+
+
         /*
             Creating Configuration object and configure it
             Creating ServiceRegistry object and apply configuration settings.
@@ -90,12 +99,17 @@ public class App
 
 //      fetch Data from database;
 
-//        Student st2=new Student();
-//        Transaction transaction1=session.beginTransaction();
-//        st2=(Student) session.get(Student.class,"MT2022035");
-//        transaction1.commit();
-//
-//        System.out.println(st2);
+        Student student1=new Student();
+        Transaction transaction1=session.beginTransaction();
+        student1=(Student) session.get(Student.class,"MT2021001");
+        Collection<Laptop> student1_laptops=student1.getLaptop_list();
 
+        System.out.println(student1);
+        for (Laptop l:
+             student1_laptops) {
+            System.out.println("Student "+student1.getRollnum()+" laptop");
+            System.out.println(l);
+        }
+        transaction1.commit();
     }
 }

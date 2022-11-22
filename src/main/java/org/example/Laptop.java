@@ -8,12 +8,6 @@ import java.util.List;
 @Entity
 @Table(name = "laptop")
 public class Laptop {
-
-    public Laptop(int lid, String lname) {
-        this.lid = lid;
-        this.lname = lname;
-    }
-
     @Id
     @Column(name = "lid")
     private int lid;
@@ -25,6 +19,11 @@ public class Laptop {
     private List<Student> students=new ArrayList<>();
 
     public Laptop() {
+    }
+
+    public Laptop(int lid, String lname) {
+        this.lid = lid;
+        this.lname = lname;
     }
 
     public int getLid() {
@@ -51,9 +50,12 @@ public class Laptop {
         this.students = students;
     }
 
-    public Laptop(int lid, String lname, List<Student> students) {
-        this.lid = lid;
-        this.lname = lname;
-        this.students = students;
+    @Override
+    public String toString() {
+        return "Laptop{" +
+                "lid=" + lid +
+                ", lname='" + lname + '\'' +
+                ", students=" + students +
+                '}';
     }
 }

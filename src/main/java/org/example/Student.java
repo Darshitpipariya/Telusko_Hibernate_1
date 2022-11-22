@@ -22,6 +22,21 @@ public class Student{
     @ManyToMany(mappedBy = "students")
     private List<Laptop> laptop_list=new ArrayList<>();
 
+    public Student(StudentName name, String rollnum, String grade) {
+        this.name = name;
+        this.rollnum = rollnum;
+        Grade = grade;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name=" + name +
+                ", rollnum='" + rollnum + '\'' +
+                ", Grade='" + Grade + '\'' +
+                '}';
+    }
+
     public StudentName getName() {
         return name;
     }
@@ -52,15 +67,5 @@ public class Student{
 
     public void setLaptop_list(List<Laptop> laptop_list) {
         this.laptop_list = laptop_list;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "name=" + name +
-                ", rollnum='" + rollnum + '\'' +
-                ", Grade='" + Grade + '\'' +
-                ", laptops=" + laptop_list +
-                '}';
     }
 }
