@@ -19,7 +19,7 @@ public class Student{
     private String rollnum;
     @Column(name="grade")
     private String Grade;
-    @ManyToMany(mappedBy = "students")
+    @ManyToMany(mappedBy = "students",fetch = FetchType.EAGER)
     private List<Laptop> laptop_list=new ArrayList<>();
 
     public Student(StudentName name, String rollnum, String grade) {
@@ -34,6 +34,7 @@ public class Student{
                 "name=" + name +
                 ", rollnum='" + rollnum + '\'' +
                 ", Grade='" + Grade + '\'' +
+                ", laptop_list=" + laptop_list +
                 '}';
     }
 

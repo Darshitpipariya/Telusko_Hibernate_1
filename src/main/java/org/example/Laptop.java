@@ -55,7 +55,6 @@ public class Laptop {
         return "Laptop{" +
                 "lid=" + lid +
                 ", lname='" + lname + '\'' +
-                ", students=" + students +
                 '}';
     }
 }

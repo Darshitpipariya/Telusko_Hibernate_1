@@ -102,14 +102,8 @@ public class App
         Student student1=new Student();
         Transaction transaction1=session.beginTransaction();
         student1=(Student) session.get(Student.class,"MT2021001");
-        Collection<Laptop> student1_laptops=student1.getLaptop_list();
 
         System.out.println(student1);
-        for (Laptop l:
-             student1_laptops) {
-            System.out.println("Student "+student1.getRollnum()+" laptop");
-            System.out.println(l);
-        }
         transaction1.commit();
     }
 }
