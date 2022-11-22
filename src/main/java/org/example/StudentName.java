@@ -11,6 +11,12 @@ public class StudentName {
     public StudentName() {
     }
 
+    public StudentName(String f_name, String m_name, String l_name) {
+        this.f_name = f_name;
+        this.m_name = m_name;
+        this.l_name = l_name;
+    }
+
     public String getF_name() {
         return f_name;
     }
