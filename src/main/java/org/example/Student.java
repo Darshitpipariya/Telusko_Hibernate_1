@@ -15,7 +15,7 @@ public class Student{
     @Column(name = "s_name")
     private StudentName name;
     @Id
-    @Column(name = "rolln0",unique = true,nullable = false)
+    @Column(name = "rollno",unique = true,nullable = false)
     private String rollnum;
     @Column(name="grade")
     private String Grade;

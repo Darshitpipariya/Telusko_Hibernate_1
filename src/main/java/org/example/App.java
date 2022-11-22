@@ -1,11 +1,12 @@
 package org.example;
 
-import jakarta.persistence.Column;
+//import jakarta.persistence.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 import org.hibernate.service.ServiceRegistry;
 
 import java.util.Collection;
@@ -101,7 +102,10 @@ public class App
 
         Student student1=new Student();
         Transaction transaction1=session.beginTransaction();
-        student1=(Student) session.get(Student.class,"MT2021001");
+        Query q1=session.createQuery("from Student where rollnum='MT2021001'");
+        student1=(Student)q1.uniqueResult();
+
+        //        student1=(Student) session.get(Student.class,"MT2021001");
 
         System.out.println(student1);
         transaction1.commit();
