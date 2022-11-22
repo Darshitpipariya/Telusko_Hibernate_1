@@ -33,7 +33,7 @@ public class App2
             Student s=new Student();
             StudentName s_name=new StudentName("fname "+i,"mname "+i,"lname "+i);
             s.setName(s_name);
-            s.setGrade(""+i);
+            s.setGrade(i);
             s.setRollnum("MT20220"+i);
             session.save(s);
         }
@@ -59,8 +59,35 @@ public class App2
         StudentName stu=(StudentName) q2.uniqueResult();
         System.out.println(stu);
 
-        t.commit();
+        Query q3=s.createQuery("select count(rollnum) from Student where Grade>=2");
+        Object count=(Object) q3.uniqueResult();
+        System.out.println("Grade>=2 count : "+count);
 
+        Query q4=s.createQuery("select rollnum,name from Student where rollnum='MT202201'");
+        Object[] objects=(Object[]) q4.uniqueResult();
+        System.out.println(objects[0]+" : "+objects[1]);
+
+        Query q5=s.createQuery("select rollnum,name from Student");
+        List<Object[]> objects_list=(List<Object[]>) q5.list();
+        for (Object[] objects1:
+             objects_list) {
+            System.out.println(objects1[0]+" : "+objects1[1]);
+        }
+
+//      :variable in query
+        Query q6=s.createQuery("select count(rollnum) from Student where Grade>= :threshold ");
+        int th=3;
+        q6.setParameter("threshold",th);
+        Object count1=(Object) q6.uniqueResult();
+        System.out.println("Grade>="+th+" count : "+count1);
+
+        th=5;
+        q6.setParameter("threshold",th);
+        Object count2=(Object) q6.uniqueResult();
+        System.out.println("Grade>="+th+" count : "+count2);
+
+        t.commit();
+        s.close();
 
     }
 }
