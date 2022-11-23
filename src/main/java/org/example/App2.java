@@ -33,7 +33,7 @@ public class App2
             Student s=new Student();
             StudentName s_name=new StudentName("fname "+i,"mname "+i,"lname "+i);
             s.setName(s_name);
-            s.setGrade(i);
+            s.setGrade(""+i);
             s.setRollnum("MT20220"+i);
             session.save(s);
         }
